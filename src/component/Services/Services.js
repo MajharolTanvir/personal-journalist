@@ -1,9 +1,11 @@
-import React from 'react';
+import useData from "../../hooks/useData";
 
 const Services = () => {
+    const [services] = useData('')
+    console.log(services);
     return (
         <div>
-            <h4>Services</h4>
+
         </div>
     );
 };

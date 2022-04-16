@@ -17,8 +17,8 @@ const Home = () => {
                         alt="First slide"
                     />
                     <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        <h3>Sports news</h3>
+                        <p>Hire me to collect Sports related news for your channel and grow up your TRP faster.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -29,8 +29,8 @@ const Home = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h3>Crime news</h3>
+                        <p>Hire me to collect Crime related news for your channel and grow up your TRP faster.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -41,8 +41,8 @@ const Home = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        <h3>Brand promotion news</h3>
+                        <p>Hire me to collect Brand promotion news for your channel and grow up your TRP faster.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -53,8 +53,8 @@ const Home = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        <h3>Actor related news</h3>
+                        <p>Hire me to collect Actor related news for your channel and grow up your TRP faster.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -65,8 +65,8 @@ const Home = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        <h3>Political news</h3>
+                        <p>Hire me to collect political news for your channel and grow up your TRP faster.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
