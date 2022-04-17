@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase.init'
+import ExternalAuth from '../ExternalAuth/ExternalAuth';
 
 
 const Registration = () => {
@@ -34,7 +35,7 @@ const Registration = () => {
         }
     }
     return (
-        <div className='flex justify-center bg-gradient-to-b from-black to-teal-400'>
+        <div className='flex justify-center bg-gradient-to-b from-black to-teal-400 text-slate-50'>
             <div className='w-96 border-4 border-cyan-400 px-6 py-4 my-12 rounded-lg shadow-2xl shadow-sky-400'>
                 <h4 className='text-center pb-4 text-slate-50'>Registration here</h4>
                 <form onSubmit={handleSubmit}>
@@ -57,6 +58,7 @@ const Registration = () => {
                     </div>
                     <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style={{ width: '100%' }}>Registration</button>
                 </form>
+                <ExternalAuth></ExternalAuth>
             </div>
         </div>
     );
