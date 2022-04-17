@@ -5,10 +5,11 @@ import banner2 from '../../Image/banner/banner2.jpg'
 import banner3 from '../../Image/banner/banner3.jpg'
 import banner4 from '../../Image/banner/banner4.jpg'
 import banner5 from '../../Image/banner/banner5.jpg'
+import Services from '../Services/Services';
 
 const Home = () => {
     return (
-        <div>
+        <div className='bg-gradient-to-b from-black to-teal-400'>
             <Carousel fade>
                 <Carousel.Item>
                     <img
@@ -70,6 +71,7 @@ const Home = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
+            <Services></Services>
         </div>
     );
 };

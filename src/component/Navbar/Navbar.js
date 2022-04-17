@@ -24,7 +24,6 @@ const Navbar = () => {
                 </div>
                 <div className='text-lg'>
                     <Link className='px-3 mx-2 no-underline text-slate-100' to="/">Home</Link>
-                    <Link className='px-3 mx-2 no-underline text-slate-100' to="services">Services</Link>
                     <Link className='px-3 mx-2 no-underline text-slate-100' to="blogs">Blogs</Link>
                     <Link className='px-3 mx-2 no-underline text-slate-100' to="about">About</Link>
                     {

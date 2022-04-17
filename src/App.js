@@ -9,6 +9,9 @@ import Services from './component/Services/Services';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Registration from './component/Registration/Registration';
 import NotFound from './component/NotFound/NotFound';
+import CheckOut from './component/CheckOut/CheckOut';
+import RequireAuth from './component/RequireAuth/RequireAuth';
+import Footer from './component/Footer/Footer';
 
 function App() {
   return (
@@ -17,12 +20,18 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/services' element={<Services></Services>}></Route>
+        <Route path='/checkout' element={
+          <RequireAuth>
+            <CheckOut></CheckOut>
+          </RequireAuth>
+        }></Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/registration' element={<Registration></Registration>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }
