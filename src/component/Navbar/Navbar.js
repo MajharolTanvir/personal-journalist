@@ -1,8 +1,16 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../Firebase.init';
 import logo from '../../Image/logo.png'
 
 const Navbar = () => {
+    const [user] = useAuthState(auth);
+
+    const handleLogout = () => {
+        signOut(auth);
+    }
     return (
         <nav className='bg-black py-2'>
             <div className='flex container mx-auto justify-between items-center'>
@@ -19,7 +27,9 @@ const Navbar = () => {
                     <Link className='px-3 mx-2 no-underline text-slate-100' to="services">Services</Link>
                     <Link className='px-3 mx-2 no-underline text-slate-100' to="blogs">Blogs</Link>
                     <Link className='px-3 mx-2 no-underline text-slate-100' to="about">About</Link>
-                    <Link className='px-3 mx-2 no-underline text-slate-100' to="login">Login</Link>
+                    {
+                        user ? <button onClick={handleLogout} className='text-slate-100 px-2'>Log out</button> : <Link className='px-3 mx-2 no-underline text-slate-100' to="login">Login</Link>
+                    }
                 </div>
             </div>
         </nav>
