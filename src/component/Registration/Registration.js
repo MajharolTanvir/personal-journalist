@@ -1,24 +1,59 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../Firebase.init'
+
 
 const Registration = () => {
+    const [error, setError] = useState('')
+
+    const emailRef = useRef('');
+    const passwordRef = useRef('');
+    const confirmPassRef = useRef('')
+
+    const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
+
+    const handleSubmit = event => {
+        event.preventDefault()
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+        const confirmPass = confirmPassRef.current.value;
+
+        if (password !== confirmPass) {
+            setError('Please enter same password')
+            return;
+        }
+        if (password.length > 8) {
+            createUserWithEmailAndPassword(email, password);
+            setError('')
+            console.log(email, password);
+        }
+        else {
+            setError('Please input atleast 8 digit password')
+            return;
+        }
+
+
+    }
+
     return (
         <div className='container mx-auto flex justify-center'>
             <div className='w-96 border-4 border-cyan-400 px-6 py-4 my-12 rounded-lg shadow-2xl shadow-sky-400'>
                 <h4 className='text-center pb-4'>Registration here</h4>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="mb-6">
-                        <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
-                        <input type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@example.com" required="" />
+                        <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
+                        <input ref={emailRef} type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@example.com" required="" />
                     </div>
                     <div className="mb-6">
-                        <label for="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your password</label>
-                        <input type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password" required="" />
+                        <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your password</label>
+                        <input ref={passwordRef} type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password" required="" />
                     </div>
                     <div className="relative z-0 mb-6 w-full group">
-                        <label for="floating_repeat_password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Confirm password</label>
-                        <input type="password" name="repeat_password" id="floating_repeat_password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Confirm Password" required="" />
+                        <label htmlFor="floating_repeat_password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Confirm password</label>
+                        <input ref={confirmPassRef} type="password" name="repeat_password" id="floating_repeat_password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Confirm Password" required="" />
                     </div>
+                    {error ? <p className='text-red-500'>{error}</p> : ''}
                     <div className="flex items-start mb-3">
                         <p>Already have an account?</p>
                         <Link to='/login' className='ml-1'>Log in</Link>

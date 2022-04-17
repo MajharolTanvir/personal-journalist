@@ -8,6 +8,7 @@ import Navbar from './component/Navbar/Navbar';
 import Services from './component/Services/Services';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Registration from './component/Registration/Registration';
+import NotFound from './component/NotFound/NotFound';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/registration' element={<Registration></Registration>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>
   );
