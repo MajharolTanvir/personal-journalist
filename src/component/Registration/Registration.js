@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link, Navigate } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase.init'
 import ExternalAuth from '../ExternalAuth/ExternalAuth';
 
@@ -12,7 +12,8 @@ const Registration = () => {
     const passwordRef = useRef('');
     const confirmPassRef = useRef('')
 
-    const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
+    const [createUserWithEmailAndPassword, createUser, createUserLoading, createError] = useCreateUserWithEmailAndPassword(auth);
+    const [sendEmailVerification, verificationSending, VerificatioonError] = useSendEmailVerification(auth);
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -24,14 +25,14 @@ const Registration = () => {
             setError('Please enter same password')
             return;
         }
-        if (password.length > 8) {
-            createUserWithEmailAndPassword(email, password);
-            setError('')
-            console.log(email, password);
-        }
-        else {
+        if (!password.length >= 8) {
             setError('Please input atleast 8 digit password')
             return;
+        }
+        else {
+            createUserWithEmailAndPassword(email, password);
+            sendEmailVerification();
+            Navigate('/')
         }
     }
     return (
@@ -51,7 +52,7 @@ const Registration = () => {
                         <label htmlFor="floating_repeat_password" className="block mb-2 text-sm font-medium text-slate-50 dark:text-gray-300">Confirm password</label>
                         <input ref={confirmPassRef} type="password" name="repeat_password" id="floating_repeat_password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Confirm Password" required="" />
                     </div>
-                    {error ? <p className='text-red-500'>{error}</p> : ''}
+                    {error || createError ? <p className='text-red-500'>{error || createError?.message}</p> : ''}
                     <div className="flex items-start mb-3">
                         <p className='text-slate-50'>Already have an account?</p>
                         <Link to='/login' className='ml-1 text-sky-200 hover:text-black'>Log in</Link>

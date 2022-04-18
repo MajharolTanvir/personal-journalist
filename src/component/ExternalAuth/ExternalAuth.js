@@ -2,11 +2,14 @@ import React from 'react';
 import { useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase.init';
 import { FaFacebook, FaGoogle, FaGithub } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 const ExternalAuth = () => {
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
     const [signInWithFacebook, facebookUser, facebookLoading, facebookError] = useSignInWithFacebook(auth);
-    const [signInWithGithub, user, loading, error] = useSignInWithGithub(auth);
+    const [signInWithGithub, githubUser, githubLoading, githubError] = useSignInWithGithub(auth);
+
+    const navigate = useNavigate('')
 
     const handleSignInWithGoogle = () => {
         signInWithGoogle();
@@ -16,6 +19,9 @@ const ExternalAuth = () => {
     }
     const handleSignInWithGithub = () => {
         signInWithGithub();
+    }
+    if (googleUser || facebookUser || githubUser) {
+        navigate('/')
     }
 
     return (

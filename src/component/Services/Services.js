@@ -17,7 +17,7 @@ const Services = () => {
                 <h4 className='text-center text-slate-50 text-3xl font-bold'>Services</h4>
                 <div style={{ height: '4px' }} className='bg-slate-100 w-40 mx-10 rounded-2xl'></div>
             </div>
-            <div className='grid grid-cols-3 gap-x-10'>
+            <div className='grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-x-10'>
                 {
                     services.map(service => <div className='mt-16 shadow-xl shadow-zinc-500' key={service.id}>
                         <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
