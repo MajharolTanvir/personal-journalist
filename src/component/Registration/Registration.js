@@ -1,19 +1,19 @@
 import React, { useRef, useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase.init'
 import ExternalAuth from '../ExternalAuth/ExternalAuth';
 
-
 const Registration = () => {
     const [error, setError] = useState('')
+    const navigate = useNavigate()
 
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const confirmPassRef = useRef('')
 
-    const [createUserWithEmailAndPassword, createUser, createUserLoading, createError] = useCreateUserWithEmailAndPassword(auth);
-    const [sendEmailVerification, verificationSending, VerificatioonError] = useSendEmailVerification(auth);
+    const [createUserWithEmailAndPassword, createUser, createUserLoading, createError] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -31,9 +31,9 @@ const Registration = () => {
         }
         else {
             createUserWithEmailAndPassword(email, password);
-            sendEmailVerification();
-            Navigate('/')
         }
+
+        navigate('/')
     }
     return (
         <div className='flex justify-center bg-gradient-to-b from-black to-teal-400 text-slate-50'>

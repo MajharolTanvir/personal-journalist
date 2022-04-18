@@ -1,7 +1,16 @@
 import React from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CheckOut = () => {
+    const notify = () => toast("Thanks for checkout");
+
+
+    const handlaChekout = event => {
+        event.preventDefault()
+        notify();
+    }
     return (
         <div className='bg-gradient-to-b from-black to-teal-400 text-white'>
             <div className='container py-10 h-screen pt-20'>
@@ -30,7 +39,7 @@ const CheckOut = () => {
                         <Form.Label>Address</Form.Label>
                         <Form.Control placeholder="" />
                     </Form.Group>
-                    <Button className='w-80 mx-auto' variant="primary" type="submit">
+                    <Button onClick={handlaChekout} className='w-80 mx-auto' variant="primary" type="submit">
                         Submit
                     </Button>
                 </Form>

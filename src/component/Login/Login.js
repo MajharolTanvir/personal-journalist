@@ -1,8 +1,10 @@
 import React, { useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase.init';
 import ExternalAuth from '../ExternalAuth/ExternalAuth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const [
@@ -11,6 +13,7 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    const [sendPasswordResetEmail, sending, forgetError] = useSendPasswordResetEmail(auth);
 
     const navigate = useNavigate()
     const location = useLocation()
@@ -29,6 +32,18 @@ const Login = () => {
         navigate(from, { replace: true })
     }
 
+    if (loading) {
+        return <p>Loading..</p>;
+    }
+
+    const notify = () => toast("Email sent");
+
+    const handlePasswordReset = () => {
+        sendPasswordResetEmail(emailRef.current.value)
+        notify()
+
+    }
+
     return (
         <div className='flex justify-center bg-gradient-to-b from-black to-teal-400'>
             <div className='w-96 border-4 border-cyan-400 p-10 my-20 text-slate-50 rounded-lg shadow-2xl shadow-sky-400'>
@@ -42,9 +57,13 @@ const Login = () => {
                         <label htmlFor="password" className="block mb-2 text-sm font-medium text-slate-50 dark:text-gray-300">Your password</label>
                         <input ref={passwordRef} type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password" required="" />
                     </div>
-                    <div className="flex items-start mb-3">
+                    <div className="flex items-start mb-1">
                         <p>Create new account?</p>
                         <Link to='/registration' className='ml-1 text-sky-200 hover:text-black'>Registration now</Link>
+                    </div>
+                    <div className="flex items-start mb-3">
+                        <p>Forget password?</p>
+                        <button onClick={handlePasswordReset} className='ml-1 text-sky-200 hover:text-black'>Click here</button>
                     </div>
                     {
                         error ? <p className='text-red-600'>{error?.message}</p> : ''

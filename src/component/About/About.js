@@ -3,12 +3,12 @@ import image from '../../Image/pic.jpg'
 
 const About = () => {
     return (
-        <div className='bg-gradient-to-b from-black to-teal-400 h-screen'>
-            <h2 className='text-slate-50 font-bold text-center'>About me</h2>
-            <div className='grid grid-cols-2 container mx-auto my-5'>
+        <div className='bg-gradient-to-b from-black to-teal-400 h-full lg:h-screen'>
+            <h2 className='text-slate-50 font-bold text-center pt-4'>About me</h2>
+            <div className='grid grid-cols-1 lg:grid-cols-2 container mx-auto my-5'>
                 <div>
                     <h1 className='text-slate-50 text-center py-3'>My name is Majharul tanvir.</h1>
-                    <div className='grid grid-cols-2 text-slate-50 text-center my-3 gap-2'>
+                    <div className='grid grid-cols-1 md:grid-cols-2 text-slate-50 text-center my-3 gap-2'>
                         <div className='border-4 border-cyan-200 h-full rounded-lg shadow-lg shadow-cyan-500'>
                             <h6 className='border-b-2 py-2'>What is my goal?</h6>
                             <p className='flex text-justify p-2'>My ambition is to work as a software engineer. But first I am trying to learn website development. Then I'd like to work in a good career while also learning software programming.</p>

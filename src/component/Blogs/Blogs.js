@@ -3,7 +3,7 @@ import { Accordion } from 'react-bootstrap';
 
 const Blogs = () => {
     return (
-        <div className='bg-gradient-to-b from-black to-teal-400 h-screen'>
+        <div className='bg-gradient-to-b from-black to-teal-400 h-full md:h-screen'>
             <div className='container'>
                 <Accordion className='w-4/6 mx-auto py-20' defaultActiveKey="0">
                     <Accordion.Item eventKey="0">

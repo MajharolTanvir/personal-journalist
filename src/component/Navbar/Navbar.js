@@ -3,7 +3,7 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../Firebase.init';
-import logo from '../../Image/logo.png'
+import logo from '../../Image/logo.png';
 
 const Navbar = () => {
     const [user] = useAuthState(auth);
@@ -12,23 +12,32 @@ const Navbar = () => {
         signOut(auth);
     }
     return (
-        <nav className='bg-black py-2'>
-            <div className='flex container mx-auto justify-between items-center'>
-                <div className='flex justify-between items-center'>
-                    <img className='w-20' src={logo} alt="" />
-                    <div className='ml-2 text-left'>
-                        <h3 className='font-bold text-2xl text-slate-100 mb-0'><span className='text-teal-400'>TANVIR</span> ANOWEAR</h3>
-                        <p className='text-slate-100 text-sm'>Journalist & High level info collection expert</p>
-                    </div>
-
-                </div>
-                <div className='text-lg'>
-                    <Link className='px-3 mx-2 no-underline text-slate-100' to="/">Home</Link>
-                    <Link className='px-3 mx-2 no-underline text-slate-100' to="blogs">Blogs</Link>
-                    <Link className='px-3 mx-2 no-underline text-slate-100' to="about">About</Link>
-                    {
-                        user ? <button onClick={handleLogout} className='text-slate-100 px-2'>Log out</button> : <Link className='px-3 mx-2 no-underline text-slate-100' to="login">Login</Link>
-                    }
+        <nav className="navbar navbar-expand-lg navbar-light bg-dark ">
+            <div className="container">
+                <Link className="navbar-brand flex justify-center items-center" to="/">
+                    <img src={logo} alt="" width="30" height="24" className="d-inline-block align-text-top" />
+                    <h4 className='text-white pl-1'><span className='text-teal-400'>TANVIR </span>ANOWEAR</h4>
+                </Link>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li className="nav-item">
+                            <Link className="nav-link text-white text-center" aria-current="page" to="/">Home</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link text-white text-center" to="blogs">Blogs</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link text-white text-center" to="about">About</Link>
+                        </li>
+                        {user ? <button onClick={handleLogout} className='text-white px-2'>Log out</button> :
+                            <li className="nav-item">
+                                <Link className="nav-link text-white text-center" to="login">Login</Link>
+                            </li>
+                        }
+                    </ul>
                 </div>
             </div>
         </nav>

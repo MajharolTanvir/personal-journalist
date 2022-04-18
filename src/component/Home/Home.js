@@ -42,8 +42,8 @@ const Home = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3>Brand promotion news</h3>
-                        <p>Hire me to collect Brand promotion news for your channel and grow up your TRP faster.</p>
+                        <h3 className='text-black'>Brand promotion news</h3>
+                        <p className='text-black'>Hire me to collect Brand promotion news for your channel and grow up your TRP faster.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -54,8 +54,8 @@ const Home = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3>Actor related news</h3>
-                        <p>Hire me to collect Actor related news for your channel and grow up your TRP faster.</p>
+                        <h3 className='text-black'>Actor related news</h3>
+                        <p className='text-black'>Hire me to collect Actor related news for your channel and grow up your TRP faster.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
