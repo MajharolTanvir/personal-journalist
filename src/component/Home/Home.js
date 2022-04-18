@@ -18,8 +18,8 @@ const Home = () => {
                         alt="First slide"
                     />
                     <Carousel.Caption>
-                        <h3>Sports news</h3>
-                        <p>Hire me to collect Sports related news for your channel and grow up your TRP faster.</p>
+                        <h3 className=' hidden md:block'>Sports news</h3>
+                        <p className=' hidden md:block'>Hire me to collect Sports related news for your channel and grow up your TRP faster.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -30,8 +30,8 @@ const Home = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3>Crime news</h3>
-                        <p>Hire me to collect Crime related news for your channel and grow up your TRP faster.</p>
+                        <h3 className=' hidden md:block'>Crime news</h3>
+                        <p className=' hidden md:block'>Hire me to collect Crime related news for your channel and grow up your TRP faster.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -42,8 +42,8 @@ const Home = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3 className='text-black'>Brand promotion news</h3>
-                        <p className='text-black'>Hire me to collect Brand promotion news for your channel and grow up your TRP faster.</p>
+                        <h3 className='text-black hidden md:block'>Brand promotion news</h3>
+                        <p className='text-black hidden md:block'>Hire me to collect Brand promotion news for your channel and grow up your TRP faster.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -54,8 +54,8 @@ const Home = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3 className='text-black'>Actor related news</h3>
-                        <p className='text-black'>Hire me to collect Actor related news for your channel and grow up your TRP faster.</p>
+                        <h3 className='text-black hidden md:block'>Actor related news</h3>
+                        <p className='text-black hidden md:block'>Hire me to collect Actor related news for your channel and grow up your TRP faster.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -66,8 +66,8 @@ const Home = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3>Political news</h3>
-                        <p>Hire me to collect political news for your channel and grow up your TRP faster.</p>
+                        <h3 className=' hidden md:block'>Political news</h3>
+                        <p className=' hidden md:block'>Hire me to collect political news for your channel and grow up your TRP faster.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>

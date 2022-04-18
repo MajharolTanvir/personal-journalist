@@ -7,8 +7,7 @@ const CheckOut = () => {
     const notify = () => toast("Thanks for checkout");
 
 
-    const handlaChekout = event => {
-        event.preventDefault()
+    const handlaChekout = () => {
         notify();
     }
     return (
