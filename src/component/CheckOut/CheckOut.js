@@ -42,6 +42,7 @@ const CheckOut = () => {
                     <Button onClick={handlaChekout} className='w-80 mx-auto' variant="primary" type="submit">
                         Submit
                     </Button>
+                    <ToastContainer />
                 </Form>
             </div>
         </div>

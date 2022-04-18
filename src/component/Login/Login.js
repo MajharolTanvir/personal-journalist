@@ -35,13 +35,10 @@ const Login = () => {
     if (loading) {
         return <p>Loading..</p>;
     }
-
     const notify = () => toast("Email sent");
-
-    const handlePasswordReset = () => {
+    const handlePassChange = () => {
         sendPasswordResetEmail(emailRef.current.value)
         notify()
-
     }
 
     return (
@@ -63,10 +60,11 @@ const Login = () => {
                     </div>
                     <div className="flex items-start mb-3">
                         <p>Forget password?</p>
-                        <button onClick={handlePasswordReset} className='ml-1 text-sky-200 hover:text-black'>Click here</button>
+                        <button onClick={handlePassChange} className='ml-1 text-sky-200 hover:text-black'><ToastContainer />Click here</button>
+
                     </div>
                     {
-                        error ? <p className='text-red-600'>{error?.message}</p> : ''
+                        error || forgetError ? <p className='text-red-600'>{error?.message || forgetError?.message}</p> : ''
                     }
                     <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style={{ width: '100%' }}>Log in</button>
                 </form>
